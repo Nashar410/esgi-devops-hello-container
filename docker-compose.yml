@@ -1,0 +1,22 @@
+version: '3'
+services:
+  redis: 
+    image: 'redis:6.0.9-alpine'
+  back:
+    build:
+      context: .
+      dockerfile: backend_dockerfile
+    image: nashar410/back:latest
+    environment:
+      - REDIS_HOST=redis
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis
+  front:
+    build:
+      context: .
+      dockerfile: frontend_dockerfile
+    image: nashar410/front:latest
+    ports:
+      - 81:80

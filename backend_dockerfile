@@ -1,0 +1,11 @@
+FROM node:15.2.1-alpine3.10
+
+# Déplacement du workdir et des fichiers de l'app
+WORKDIR /usr/local/src/app
+COPY . /usr/local/src/app
+
+# Dépendence nécessaire en prod
+RUN npm install --production
+
+# Entrypoint pour  request au server node
+ENTRYPOINT ["/usr/local/bin/node", "/usr/local/src/app/server.js"]

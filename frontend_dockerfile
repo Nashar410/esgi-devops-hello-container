@@ -1,0 +1,15 @@
+FROM node:15.2.1-alpine3.10 as builder
+
+# Déplacement du workdir et des fichiers de l'app
+WORKDIR /usr/local/src/app
+COPY . /usr/local/src/app
+
+# Installation des dépendances
+RUN npm install
+
+# Build de l'app
+RUN npm run build
+
+# Mise à disposition du build sur nginx
+FROM nginx:1.19.4-alpine
+COPY --from=builder /usr/local/src/app/dist/ /usr/share/nginx/html
