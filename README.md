@@ -1,54 +1,71 @@
-# hello-container
+# ESGI - Cours électif - Devops
 
-Sample application to play with containers!
+## Projet
 
-## Disclaimer
-
-This is not a _real_ project. I use this application to illustrate some training or talks.
-
-## Versions
-
-This project has been tested with NodeJS v8.4.0 and NPM v5.3.0.
-
-## Structure
-
-```
-The application contains three parts: a frontend, a server and a redis database, interacting like this :
-
-[ Frontend (web application)] --> [ Backend (nodeJs server)] --> [ Database (redis server)]
+Ce projet est une évalutation des compétences acquises en cours. Il consiste à mettre en place le **CI** et le **CD** d'une application déjà opérationnelle.
+Voici un lien permettant de tester l'application actuellement en live : 
+- [Application Hello-World] (http://f63963e3-bf80-48e6-b72c-da173649041e.pub.instances.scw.cloud:81/#/ "hello-container")
 
 
-The frontend can run without server or database, in a mode called Offline mode.
+### Technologie utilisée
+- Github actions
+- Terraform (**v0.13**)
+- Docker/ Docker hub
+- Hébergement recevant le déploiement sur **Scaleway**
+- Application **hello-world** fournie dans la consigne
 
-```
+### Groupe :
+- **BOURKHIS** Hedi
+- **HEDDADJ** Steven
+- **IHYATEN** Imane
+- **JACQUENET** Jean Christophe
 
-## Frontend build
+## Déploiment de l'application
 
-``` bash
-# install dependencies
-npm install
+### Commit et Push sur la branche
 
-# build for production with minification
-npm run build
+![Commit et Push sur la branche](https://i.postimg.cc/pr90s6jS/1.gif "Commit et Push sur la branche")
 
-# You can now serve through a web server like nginx the content of the dist/ folder
-```
+### Attendre que le CI/CD se termine
 
-## Backend build
+![Attendre que le CI/CD se termine](https://i.postimg.cc/hvH261bt/1a.gif "Attendre que le CI/CD se termine")
 
-```
-npm install --production
-```
+![Build & push sur un Docker Repository](https://i.postimg.cc/SQ51nmFb/2.gif "Build & push sur un Docker Repository")
 
-You can then run the server by running:
-```
-node ./server.js
-```
+![Terraforming](https://i.postimg.cc/kXLxN5fq/5.gif "Terraforming")
 
-The backend requires a redis server.
-You can pass the host running the redis server through the REDIS_HOST environment variable.
+![Deploiement](https://i.postimg.cc/J4k6JSMD/6.gif "Deploiement")
 
-```
-npm install --production
-REDIS_HOST=redis.example.net node ./server.js
-```
+### Testez l'application déployée
+![Testez l'application déployée](https://i.postimg.cc/bJrLvBmv/7.gif "Testez l'application déployée")
+
+## Déroulement du CI/CD
+
+### Build & push sur un Docker Repository
+- Durant cette étape, un build docker de l'application et des tests sont effectués.
+- Lorsque ceux-ci sont terminés, une connexion à un repository docker hub est lancée. Les images représentant le front et le back de l'application sont alors envoyés sur ce repository. Par souci de classement, les images sont taggées avec le SHA du commit en cours.
+![Build & push sur un Docker Repository_2](https://i.postimg.cc/Z5Pws39J/a.png "Build & push sur un Docker Repository_2")
+
+### Terraforming
+- Pour cette étape, Terraform va analyser l'infrastructure déjà en place et décider de la garder ou de la mettre à jour.
+- Une fois sa décision prise, des exports de l'id et l'IP des infrastructures est effectuée. Ces exports seront utilisés dans la partie déploiement.
+
+```Evolution possible :
+
+A l'heure actuelle, Terraforme créer en permanence de nouvelle instance scaleway. Il faudra qu'il puisse mettre à jour l'infrastructure en cours.
+
+``` 
+![Terraforming_2](https://i.postimg.cc/GpcqW2YG/b.png "Terraforming_2")
+
+### Deploiement
+
+- Dans la dernière étape, l'application est déployée sur Scaleway. 
+- Grâce aux IP et ID exportées précédemment, des connexions en SSH sur les instances Scaleway de base de données et d'application sont lancées.
+- Sur chacun des servers, docker est utilisé pour récupérer les images adéquates : 
+    - la distribution officielle de redis pour le server de base de données
+    - les images tagées du SHA du commit en cours pour les images de back et de front pour le server d'application.
+![Deploiement_2](https://i.postimg.cc/JzCTQKzT/c.png "Deploiement_2")
+
+## Conclusion 
+
+Le déploiement de l'application est terminée. Elle n'aura demandé qu'une intervention humaine, l'envoie du code sur Github. 
