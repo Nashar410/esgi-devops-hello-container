@@ -10,7 +10,7 @@ variable "public_key" {
 
 variable "access_key" {
   type = string
-  default = "SCWQQ20GBH82CST1S1J6"
+  default = "SCWDN8BSD55CPF9FEPF8"
 }
 variable "secret_key" {
   type = string
