@@ -30,10 +30,6 @@ Voici un lien permettant de tester l'application actuellement en live :
 
 ![Attendre que le CI/CD se termine](https://i.postimg.cc/hvH261bt/1a.gif "Attendre que le CI/CD se termine")
 
-![Build & push sur un Docker Repository](https://i.postimg.cc/SQ51nmFb/2.gif "Build & push sur un Docker Repository")
-
-![5a.gif](https://i.postimg.cc/zfpv7JTx/5a.gif)
-
 ![Deploiement](https://i.postimg.cc/J4k6JSMD/6.gif "Deploiement")
 
 ### Testez l'application déployée
