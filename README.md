@@ -46,7 +46,8 @@ Voici un lien permettant de tester l'application actuellement en live :
 - Pour cette étape, Terraform va analyser l'infrastructure déjà en place et décider de la garder ou de la mettre à jour.
 - Une fois sa décision prise, des exports de l'id et l'IP des infrastructures est effectuée. Ces exports seront utilisés dans la partie déploiement.
 
-```Evolution possible :
+```
+Evolution possible :
 
 A l'heure actuelle, Terraforme créer en permanence de nouvelle instance scaleway. Il faudra qu'il puisse mettre à jour l'infrastructure en cours.
 
