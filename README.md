@@ -52,7 +52,7 @@ Lien du répertoire Github :
 ```
 Evolution possible :
 
-A l'heure actuelle, Terraforme créer en permanence de nouvelle instance scaleway. Il faudra qu'il puisse mettre à jour l'infrastructure en cours.
+A l'heure actuelle, Terraforme créer en permanence de nouvelles instances scaleway. Il faudra qu'il puisse mettre à jour l'infrastructure en cours.
 
 ``` 
 ![Terraforming_2](https://i.postimg.cc/GpcqW2YG/b.png "Terraforming_2")
@@ -60,7 +60,7 @@ A l'heure actuelle, Terraforme créer en permanence de nouvelle instance scalewa
 ### Deploiement
 
 - Dans la dernière étape, l'application est déployée sur Scaleway. 
-- Grâce aux IP et ID exportées précédemment, des connexions en SSH sur les instances Scaleway de base de données et d'application sont lancées.
+- Grâce aux IP et ID exportés précédemment, des connexions en SSH sur les instances Scaleway de base de données et d'application sont lancées.
 - Sur chacun des servers, docker est utilisé pour récupérer les images adéquates : 
     - la distribution officielle de redis pour le server de base de données
     - les images tagées du SHA du commit en cours pour les images de back et de front pour le server d'application.
@@ -68,4 +68,4 @@ A l'heure actuelle, Terraforme créer en permanence de nouvelle instance scalewa
 
 ## Conclusion 
 
-Le déploiement de l'application est terminée. Elle n'aura demandé qu'une intervention humaine, l'envoie du code sur Github. 
+Le déploiement de l'application est terminé. Elle n'aura demandé qu'une intervention humaine, l'envoie du code sur Github. 
