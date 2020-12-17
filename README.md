@@ -3,9 +3,12 @@
 ## Projet
 
 Ce projet est une évalutation des compétences acquises en cours. Il consiste à mettre en place le **CI** et le **CD** d'une application déjà opérationnelle.
+
 Voici un lien permettant de tester l'application actuellement en live : 
 - [Application Hello-World](http://f63963e3-bf80-48e6-b72c-da173649041e.pub.instances.scw.cloud:81/#/ "hello-container")
 
+Lien du répertoire Github :
+- [Répertoire Github](https://github.com/Nashar410/esgi-devops-hello-container "github")
 
 ### Technologie utilisée
 - Github actions
